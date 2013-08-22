@@ -82,10 +82,8 @@
             var lon=$(this).attr('data-lon');
             var name=$(this).attr('title');
             var ans = $.inArray(name, marcadores);
-            console.log(ans);
             if (ans == -1){
                 marcadores.push(name);
-                console.log(marcadores);
                 var marcador = {
                    lat: lat,
                    lng: lon,
