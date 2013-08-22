@@ -1,6 +1,7 @@
 ﻿Hacer:
 - Habilitar Buscar con enter DONE
-- En vez de que cada li tenga su método onClick definido inline, que se le agregue el método usando el live de jquery
+- En vez de que cada li tenga su método onClick definido inline, que se le agregue el método usando el live de jquery DONE
 - Que no se borren los marcadores (o sea que acumulen) DONE
 - Poner un botón "Limipiar mapa" que borra todos los marcadores DONE
-- Poner una flechita copada en vez de la chota que hay (workin on it)
+- Poner una flechita copada en vez de la chota que hay (workin on it) DONE
+- Vaciar array de marcadores al limpiar la lista de marcadores.
