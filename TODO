@@ -3,4 +3,4 @@
 - En vez de que cada li tenga su método onClick definido inline, que se le agregue el método usando el live de jquery
 - Que no se borren los marcadores (o sea que acumulen) DONE
 - Poner un botón "Limipiar mapa" que borra todos los marcadores
-- Cambiar "Arrastrar para buscar" por una imagen (por ejemplo, una flechita)
+- Poner una flechita copada en vez de la chota que hay
