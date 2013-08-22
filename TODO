@@ -1,5 +1,5 @@
 Hacer:
-- Habilitar Buscar con enter
+- Habilitar Buscar con enter DONE
 - En vez de que cada li tenga su método onClick definido inline, que se le agregue el método usando el live de jquery
 - Que no se borren los marcadores (o sea que acumulen)
 - Poner un botón "Limipiar mapa" que borra todos los marcadores
