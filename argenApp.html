@@ -49,6 +49,8 @@
                     $("#btnBuscar").click();
                 }
             });
+
+            $('#results').on("click","a.resultados",chooseAddr);
         }); 
         function addr_search() {
             var inp = document.getElementById("addr");
@@ -57,7 +59,7 @@
                 var items = [];
 
                 $.each(data, function(key, val) {
-                    items.push("<li><a href='#' onclick='chooseAddr(" + val.lat +","+ val.lon +","+"\""+val.display_name+"\""+");return false;'>" + val.display_name + '</a></li>'
+                    items.push("<li><a href='#' class='resultados' data-lat='"+val.lat+"' data-lon='"+val.lon+"' title='"+val.display_name+"'>" + val.display_name + '</a></li>'
                     );
                 });
                 $('#results').empty();
@@ -74,12 +76,16 @@
                 }
             });
         };
-        function chooseAddr(lat, lon, name) {
+        function chooseAddr() {
 
-            
+            var lat=$(this).attr('data-lat');
+            var lon=$(this).attr('data-lon');
+            var name=$(this).attr('title');
             var ans = $.inArray(name, marcadores);
+            console.log(ans);
             if (ans == -1){
                 marcadores.push(name);
+                console.log(marcadores);
                 var marcador = {
                    lat: lat,
                    lng: lon,
