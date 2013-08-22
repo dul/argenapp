@@ -42,6 +42,7 @@
     <script type="text/javascript" >
         var marcadores=[];
         $(document).ready(function(){
+            $("#btnLimpiar").hide();
             $("#mapa").argenmap();
             $("#addr").keyup(function(event){
                 if(event.keyCode == 13){
@@ -75,14 +76,19 @@
         };
         function chooseAddr(lat, lon, name) {
 
-            marcadores.push(name);
-            var marcador = {
-                lat: lat,
-                lng: lon,
-                nombre: name        
-            };
-            $('#mapa').agregarMarcador( marcador );
-
+            
+            var ans = $.inArray(name, marcadores);
+            if (ans == -1){
+                marcadores.push(name);
+                var marcador = {
+                   lat: lat,
+                   lng: lon,
+                   nombre: name        
+                };
+                $('#mapa').agregarMarcador( marcador );
+                $('#btnLimpiar').show();
+            }
+            
         };
 
 
@@ -90,6 +96,7 @@
             $.each(marcadores, function(index,item){
                 $('#mapa').quitarMarcador(item);
             });    
+            $('#btnLimpiar').hide(); 
         };
         </script>
 
