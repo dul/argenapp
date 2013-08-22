@@ -2,22 +2,22 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
-        <title>Snap.js</title>
+        <title>ArgenApp</title>
         <meta http-equiv="x-ua-compatible" content="IE=edge" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
-        <link rel="stylesheet" type="text/css" href="snap.css" />
-        <link rel="stylesheet" type="text/css" href="demo.css" />
         <meta charset="utf-8">
-        <title>IGN - Argenmap </title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
         <meta name="description" content="Mapas del IGN para la web">
         <meta name="author" content="">
+
         <!-- Le styles -->
         <link href="http://www.ign.gob.ar/2013/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="http://www.ign.gob.ar/2013/css/bootstrap-responsive.css"  rel="stylesheet">
-        <link href="http://twitter.github.io/bootstrap/assets/css/docs.css" rel="stylesheet">        
+        <link href="http://twitter.github.io/bootstrap/assets/css/docs.css" rel="stylesheet">       
+        <link rel="stylesheet" type="text/css" href="snap.css" />
+        <link rel="stylesheet" type="text/css" href="demo.css" /> 
         <style type="text/css">
 
         #mapa,body,html{
@@ -115,10 +115,13 @@
             <div class="snap-drawer snap-drawer-left">
                 <div>
                     <div id="busqueda" >
-                        <input type="text" name="addr" value="" id="addr" size="10" />
-                        <button type="button" onclick="addr_search();" id="btnBuscar">Buscar</button>
-                        <div class="container-fluid" id="results" style="border:1px solid black"></div>
-                        <button type="button" onclick="limpiar();" id="btnLimpiar">Limpiar Marcadores</button>
+                        <div class="container-fluid" id="inputYboton">
+                            <input type="text" name="addr" value="" id="addr" size="10" />
+                            <button type="button" onclick="addr_search();" id="btnBuscar" class="btn btn-inverse">Buscar</button>
+                        </div><!--container-fluid-->
+
+                        <div class="container-fluid" id="results"></div>
+                        <button type="button" onclick="limpiar();" id="btnLimpiar" class="btn btn-inverse">Limpiar Marcadores</button>
                     </div>
                 </div>
             </div>
@@ -126,9 +129,7 @@
         
 
         <div id="content" class="snap-content">
-            <div id="toolbar">
-                <a href="#" id="open-left"></a>
-            </div>
+            
             <div id="do-drag" style='z-index:10'></div>
 
             <div id="mapa" >
