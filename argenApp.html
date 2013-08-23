@@ -90,6 +90,7 @@
                    nombre: name        
                 };
                 $('#mapa').agregarMarcador( marcador );
+                $('#mapa').centro(marcador.lat, marcador.lng);
                 $('#btnLimpiar').show();
             }
             
