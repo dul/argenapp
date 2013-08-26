@@ -82,6 +82,14 @@
                 }
             });
 
+            
+            if($(window).width() >= 800) {
+                $('#do-drag').css({bottom:'64px'});
+            }
+            else{
+                $('#do-drag').css({top:'12px'});
+            }
+            
             $('#results').on("click","a.resultados",chooseAddr);       
         }); 
 
@@ -178,9 +186,8 @@
 
         <div id="content" class="snap-content ">
             
-            <div class="do-drag hidden-desktop hidden-tablet visible-phone" id="draggerPhone" style='z-index:10'></div>
-            <div class="do-drag hidden-phone visible-desktop visible-tablet" id="draggerDesktop" style='z-index:10'></div>
-
+            <div id="do-drag" style='z-index:10'></div>
+ 
             <div id="mapa" >
             </div><!-- mapa -->
         </div>
