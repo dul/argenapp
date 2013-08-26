@@ -54,6 +54,25 @@
 
     <script type="text/javascript" >
         var marcadores=[];
+        var opts = {
+            lines: 11, // The number of lines to draw
+            length: 4, // The length of each line
+            width: 4, // The line thickness
+            radius: 6, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            rotate: 0, // The rotation offset
+            direction: 1, // 1: clockwise, -1: counterclockwise
+            color: '#000', // #rgb or #rrggbb or array of colors
+            speed: 1, // Rounds per second
+            trail: 60, // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: false, // Whether to use hardware acceleration
+            className: 'spinner', // The CSS class to assign to the spinner
+            zIndex: 2e9, // The z-index (defaults to 2000000000)
+            left: 'auto',
+            top: 'auto'
+        };
+        
         $(document).ready(function(){
             $("#btnLimpiar").hide();
             $("#mapa").argenmap();
@@ -63,13 +82,15 @@
                 }
             });
 
-            $('#results').on("click","a.resultados",chooseAddr);
+            $('#results').on("click","a.resultados",chooseAddr);       
         }); 
-        function addr_search() {
-            var inp = document.getElementById("addr");
 
+        function addr_search() {
+
+            var inp = document.getElementById("addr");
+            $('#loader').spin(opts);
             $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=AR&q=' + inp.value, function(data) {
-                var items = [];
+                var items = [];  
 
                 $.each(data, function(key, val) {
                     items.push("<li><a href='#' class='resultados' data-lat='"+val.lat+"' data-lon='"+val.lon+"' title='"+val.display_name+"'>" + val.display_name + '</a></li>'
@@ -84,11 +105,15 @@
                     
                         html: items.join('')
                     }).appendTo('#results');
+                    $('#loader').spin(false);
                 } else {
                     $('<p>', { html: "No results found" }).appendTo('#results');
+                    $('#loader').spin(false);
                 }
+                
             });
         };
+
         function chooseAddr() {
 
             var lat=$(this).attr('data-lat');
@@ -119,22 +144,30 @@
             $('#btnLimpiar').hide(); 
         };
         </script>
-
-
-        
-
     </head>
-    <body>
 
+    <body>
         <div class="snap-drawers">
             <div class="snap-drawer snap-drawer-left ">
                 <div>
                     <div id="busqueda" class="scrollable">
                         <div class="container-fluid" id="inputYboton">
                             <input type="text" name="addr" value="" id="addr" size="10" />
-                            <button type="button" onclick="addr_search();" id="btnBuscar" class="btn btn-inverse">Buscar</button>
+                            <table>
+                                <tr>
+                                    <td style="width:50%;">
+                                        <button type="button" onclick="addr_search();" id="btnBuscar" class="btn btn-inverse">Buscar</button>
+                                    </td>
+                                    <td  style="width:50%;">
+                                        <div id="loader" ></div>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            
+                            
                         </div><!--container-fluid-->
-
+                        
                         <div class="container-fluid" id="results" style="overflow:auto"></div>
                         <button type="button" onclick="limpiar();" id="btnLimpiar" class="btn btn-inverse">Limpiar Marcadores</button>
                     </div>
@@ -154,6 +187,8 @@
 
         <script type="text/javascript" src="snap.js"></script>
         <script type="text/javascript" src="demo.js"></script>
+        <script type="text/javascript" src="spin.min.js"></script>
+        <script type="text/javascript" src="jquery.spin.js"></script>
         <script type="text/javascript">
             var snapper = new Snap({
                 element: document.getElementById('content'),
