@@ -100,7 +100,8 @@
                 var marcador = {
                    lat: lat,
                    lng: lon,
-                   nombre: name        
+                   nombre: name,
+                   contenido : '<h4 style="color:black;">'+name+'</h4>'     
                 };
                 $('#mapa').agregarMarcador( marcador );
                 $('#mapa').centro(marcador.lat, marcador.lng);
