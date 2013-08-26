@@ -30,6 +30,16 @@
         #mapa img{
             max-width: none
         }
+        .scrollable{
+            overflow: auto;
+            -webkit-transition-property: top, bottom;
+            transition-property: top, bottom;
+            -webkit-transition-duration: .2s, .2s;
+            transition-duration: .2s, .2s;
+            -webkit-transition-timing-function: linear, linear;
+            transition-timing-function: linear, linear;
+            -webkit-overflow-scrolling: touch;
+        }
         
         
 
@@ -119,7 +129,7 @@
         <div class="snap-drawers">
             <div class="snap-drawer snap-drawer-left ">
                 <div>
-                    <div id="busqueda" >
+                    <div id="busqueda" class="scrollable">
                         <div class="container-fluid" id="inputYboton">
                             <input type="text" name="addr" value="" id="addr" size="10" />
                             <button type="button" onclick="addr_search();" id="btnBuscar" class="btn btn-inverse">Buscar</button>
