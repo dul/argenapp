@@ -21,7 +21,7 @@ function touchScroll(id){
 		document.getElementById(id).addEventListener("touchstart", function(event) {
 		    scrollStartPosY=this.scrollTop+event.touches[0].pageY; 
 		    scrollStartPosX=this.scrollLeft+event.touches[0].pageX; 
-		    //event.preventDefault(); 
+		    event.preventDefault(); 
 		    // Keep this remarked so you can click on buttons and links in the div
 		},false);
 		document.getElementById(id).addEventListener("touchmove", function(event) {
