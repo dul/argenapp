@@ -104,6 +104,7 @@
                     
                         html: items.join('')
                     }).appendTo('#results');
+                    var myScroll = new iScroll('results');
                     $('#loader').spin(false);
                 } else {
                     $('<p>', { html: "No results found" }).appendTo('#results');
@@ -187,6 +188,7 @@
         <script type="text/javascript" src="snap.js"></script>
         <script type="text/javascript" src="spin.min.js"></script>
         <script type="text/javascript" src="jquery.spin.js"></script>
+        <script type="text/javascript" src="iscroll.js"></script>
         <script type="text/javascript">
             var snapper = new Snap({
                 element: document.getElementById('content'),
