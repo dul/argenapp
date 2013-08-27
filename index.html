@@ -29,13 +29,6 @@
         #mapa img{
             max-width: none
         }
-        /* Overthrow CSS:
-        Enable overflow: auto on elements with overthrow class when html element has overthrow class too */
-        .overthrow-enabled .overthrow {
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
 
         
         
@@ -155,7 +148,7 @@
     <body>
         <div class="snap-drawers">
             <div class="snap-drawer snap-drawer-left ">
-                <div class="overthrow">
+                <div>
                     <div id="busqueda">
                         <div class="container-fluid" id="inputYboton">
                             <input type="text" name="addr" value="" id="addr" size="10" />
@@ -194,7 +187,6 @@
         <script type="text/javascript" src="snap.js"></script>
         <script type="text/javascript" src="spin.min.js"></script>
         <script type="text/javascript" src="jquery.spin.js"></script>
-        <script type="text/javascript" src="overthrow.js"></script>
         <script type="text/javascript">
             var snapper = new Snap({
                 element: document.getElementById('content'),
