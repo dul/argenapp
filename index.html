@@ -63,6 +63,8 @@
             left: 'auto',
             top: 'auto'
         };
+
+
         
         $(document).ready(function(){
             $("#btnLimpiar").hide();
@@ -81,7 +83,8 @@
                 $('#do-drag').css({top:'12px'});
             }
             
-            $('#results').on("click","a.resultados",chooseAddr);       
+            $('#results').on("click","a.resultados",chooseAddr);  
+
         }); 
 
         function addr_search() {
@@ -105,13 +108,16 @@
                     
                         html: items.join('')
                     }).appendTo('#results');
-                    var myScroll = new iScroll('results');
+                    
                     $('#loader').spin(false);
                 } else {
                     $('<p>', { html: "No results found" }).appendTo('#results');
                     $('#loader').spin(false);
                 }
                 
+                var myScroll = new iScroll('results',{hScroll:false,hScrollbar:false,vScrollbar:true,fixedScrollbar:true,bounce:false,momentum:false,lockDirection:true});
+
+
             });
         };
 
@@ -149,7 +155,7 @@
 
     <body>
         <div class="snap-drawers">
-            <div class="snap-drawer snap-drawer-left ">
+            <div class="snap-drawer snap-drawer-left"  style="overflow:hidden;">
                 <div>
                     <div id="busqueda">
                         <div class="container-fluid" id="inputYboton">
@@ -169,8 +175,10 @@
                             
                         </div><!--container-fluid-->
                         
-                        <div class="container-fluid" id="results"></div>
-                        <button type="button" onclick="limpiar();" id="btnLimpiar" class="btn btn-inverse">Limpiar Marcadores</button>
+                        <div class="container-fluid" id="results" style="height:400px;position:relative;">
+
+                        </div>
+                        <button type="button" onclick="limpiar();" id="btnLimpiar" class="btn btn-inverse" style="bottom:0px;">Limpiar Marcadores</button>
                     </div>
                 </div>
             </div>
