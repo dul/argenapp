@@ -53,7 +53,10 @@
             top:110px; bottom:70px; left:0;
             /*width:100%; Revisar si sacar esto no caga el scrolling, pero en principio no deberia tener width 100%*/
             overflow:auto;
-        }     
+        }   
+        #btnLimpiar{
+            display: block;
+        }  
                 
 
         </style>
@@ -197,7 +200,7 @@
        
                 <div class="container-fluid" id="inputYboton">
                     <input type="text" name="addr" value="" id="addr" size="10" />
-                    <table>
+                    <table style="width:100%;">
                         <tr>
                             <td style="width:50%;">
                                 <button type="button" onclick="addr_search();" id="btnBuscar" class="btn btn-inverse">Buscar</button>
