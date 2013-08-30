@@ -14,4 +14,4 @@
 
 
 - revisar búsqueda de direcciones tipo calle + número, calle + y + calle (ej. Florida 100, Buenos Aires anda, pero Av. del Libertador 1000, Buenos Aires o Florida y Sarmiento, Buenos Aires no andan)
-- Fit to bounds on result
+- Fit to bounds on result DONE usando argenmap.encuadrar()

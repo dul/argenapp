@@ -69,6 +69,7 @@
     <script type="text/javascript" >
         var marcadores=[];
         var myScroll=null;
+        var vals = [];
         var opts = {
             lines: 11, // The number of lines to draw
             length: 4, // The length of each line
@@ -117,10 +118,13 @@
             $('#loader').spin(opts);
             $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=AR&q=' + inp.value, function(data) {
                 var items = [];  
-
+                vals = [];
+                var contador = 0;
                 $.each(data, function(key, val) {
-                    items.push("<li><a href='#' class='resultados' data-lat='"+val.lat+"' data-lon='"+val.lon+"' title='"+val.display_name+"'>" + val.display_name + '</a></li>'
-                    );
+                    items.push("<li><a href='#' class='resultados' data-index='"+contador+"' data-lat='"+val.lat+"' data-lon='"+val.lon+"' title='"+val.display_name+"'>" + val.display_name + '</a></li>');
+                    contador = contador +1;
+                    vals.push(val);
+                    console.log(val);
                 });
                 $('#results').empty();
                 //$('<p>', { html: "Search results:" }).appendTo('#results');
@@ -151,6 +155,7 @@
             var lat=$(this).attr('data-lat');
             var lon=$(this).attr('data-lon');
             var name=$(this).attr('title');
+            var index = $(this).attr('data-index');
             var ans = $.inArray(name, marcadores);
             if (ans == -1){
                 marcadores.push(name);
@@ -161,7 +166,15 @@
                    contenido : '<h4 style="color:black;">'+name+'</h4>'     
                 };
                 $('#mapa').agregarMarcador( marcador );
-                $('#mapa').centro(marcador.lat, marcador.lng);
+
+                var encuadre = {
+                    sur: vals[index].boundingbox[0],
+                    norte: vals[index].boundingbox[1],
+                    oeste: vals[index].boundingbox[2],
+                    este: vals[index].boundingbox[3]
+                };
+
+                $('#mapa').encuadrar( encuadre );
                 $('#btnLimpiar').show();
             }
             
