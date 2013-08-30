@@ -176,9 +176,10 @@
                     oeste: vals[index].boundingbox[2],
                     este: vals[index].boundingbox[3]
                 };
-
+                snapper.close();
                 $('#mapa').encuadrar( encuadre );
                 $('#btnLimpiar').show();
+
             }
             
         };
